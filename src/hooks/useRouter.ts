@@ -1,6 +1,8 @@
 const useRouter = () => {
-  const push = () => {
-    return;
+  const push = (path: string) => {
+    history.pushState(null, '', path);
+    const popStateEvent = new PopStateEvent('popstate');
+    dispatchEvent(popStateEvent);
   };
   return { push };
 };
