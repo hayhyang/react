@@ -1,11 +1,16 @@
 # React와 History API 사용하여 SPA Router 기능 구현하기
 
-### 실행 순서
-
-1. `Router`에 현재경로 `state`와 `setState`메서드를 context로 구성
-2. 버튼 클릭시 `history.pushState` 메서드로 path 변경
-3. `pushState` 메서드 실행하며 `window.onpopstate` 이벤트 발생시킴
-4. `Route`에서 현재경로와 props으로 받은 경로를 비교하여 일치할 때 component 리턴
+### 구조
+- `components`
+  - `Route.tsx` : 현재 경로에 맞는 컴포넌트틀 렌더링
+  - `Router.tsx` : 현재 경로를 상태값에 저장해 자식 컴포넌트에 전달
+- `hooks`
+  - `useRouter.tsx` : 경로를 변경하는 메서드를 가진 훅
+- `pages`
+  - `About.tsx` : `/about` 경로 진입시 렌더링되는 페이지
+  - `Root.tsx` : `/` 경로 진입시 렌더링되는 페이지
+- `App.tsx` : Router 구성
+- `main.tsx` : 진입점
 
 ### 구현 요구사항
 
