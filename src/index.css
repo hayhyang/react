@@ -13,6 +13,9 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
+*:focus {
+  outline: none;
+}
 
 a {
   font-weight: 500;
@@ -56,6 +59,20 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 400px;
+}
+
+input {
+  border: none;
+  border-bottom: 1px solid gray;
+  background-color: transparent;
+  height: 3em;
 }
 
 @media (prefers-color-scheme: light) {
