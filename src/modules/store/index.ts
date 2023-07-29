@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 type State = any;
 type Action = any;
 type Reducer = (state: State, action: Action) => State;
@@ -38,24 +36,4 @@ const reducer: Reducer = (state = initState, action) => {
 
 const store = createStore(reducer);
 
-const Todos = () => {
-  const [todos, setTodos] = useState([]);
-  const onSubmit = (e: any) => {
-    e.preventDefault();
-    store.dispatch({ type: 'add', payload: '할일 추가' });
-  };
-
-  console.log('todos', todos);
-
-  return (
-    <div>
-      {todos?.map((todo: string, i: number) => <li key={i}>{todo}</li>)}
-      <form onSubmit={onSubmit}>
-        <input type="text" id="todo" name="todo" />
-        <button type="submit">submit</button>
-      </form>
-    </div>
-  );
-};
-
-export default Todos;
+export default store;

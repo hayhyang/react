@@ -1,4 +1,4 @@
-const useRouter = () => {
+export const useRouter = () => {
   const push = (path: string) => {
     history.pushState(null, '', path);
     const popStateEvent = new PopStateEvent('popstate');
@@ -6,5 +6,3 @@ const useRouter = () => {
   };
   return { push };
 };
-
-export default useRouter;

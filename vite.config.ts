@@ -7,9 +7,8 @@ export default defineConfig({
   resolve: {
     alias: [
       { find: '@components', replacement: '/src/components' },
-      { find: '@hooks', replacement: '/src/hooks' },
+      { find: '@modules', replacement: '/src/modules' },
       { find: '@pages', replacement: '/src/pages' },
-      { find: '@store', replacement: '/src/store' },
     ],
   },
 });

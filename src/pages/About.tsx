@@ -1,4 +1,4 @@
-import useRouter from '@hooks/useRouter';
+import { useRouter } from '@modules/router/hooks';
 
 const About = () => {
   const { push } = useRouter();

@@ -8,9 +8,8 @@
     "baseUrl": ".",
     "paths": {
       "@components/*": ["src/components/*"],
-      "@hooks/*": ["src/hooks/*"],
+      "@modules/*": ["src/modules/*"],
       "@pages/*": ["src/pages/*"],
-      "@store/*": ["src/store/*"]
     },
 
     /* Bundler mode */
