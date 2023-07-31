@@ -1,9 +1,10 @@
-import Route from '@router/Route';
-import Router from '@router/Router';
-import Routes from '@router/Routes';
-import About from '@pages/About';
-import Root from '@pages/Root';
-import Todos from '@pages/Todos';
+import Route from 'router/Route';
+import Router from 'router/Router';
+import Routes from 'router/Routes';
+
+import About from 'pages/About';
+import Root from 'pages/Root';
+import Todos from 'pages/Todos';
 
 function App() {
   return (

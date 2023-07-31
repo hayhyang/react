@@ -1,8 +1,8 @@
-import { ReactNode, useContext } from 'react';
-import { RouterContext } from '@router/Router';
+import { ReactElement, useContext } from 'react';
+import { RouterContext } from 'router/Router';
 
 interface RoutesProps {
-  children: ReactNode | ReactNode[];
+  children: ReactElement[];
 }
 
 const Routes = ({ children }: RoutesProps) => {
@@ -10,12 +10,11 @@ const Routes = ({ children }: RoutesProps) => {
 
   window.onpopstate = () => setPath(window.location.pathname);
 
-  for (const route of children) {
-    if (path === route.props.path) {
-      return route.props.component;
+  for (const { props } of children) {
+    if (path === props.path) {
+      return props.component;
     }
   }
-
   return null;
 };
 

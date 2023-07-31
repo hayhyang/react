@@ -6,9 +6,10 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: [
-      { find: '@components', replacement: '/src/components' },
-      { find: '@modules', replacement: '/src/modules' },
-      { find: '@pages', replacement: '/src/pages' },
+      { find: 'components', replacement: '/src/components' },
+      { find: 'modules', replacement: '/src/modules' },
+      { find: 'pages', replacement: '/src/pages' },
+      { find: 'router', replacement: '/src/router' },
     ],
   },
 });
