@@ -1,59 +1,37 @@
-import { useState } from 'react';
-
-type State = any;
-type Action = any;
-type Reducer = (state: State, action: Action) => State;
-type Listener = () => void;
-
-const createStore = (reducer: Reducer) => {
-  let state: State;
-  const listeners: Listener[] = [];
-  reducer(state, {
-    type: 'init',
-  });
-
-  return {
-    dispatch: (action: Action) => {
-      state = reducer(state, action);
-      listeners.forEach((listener) => listener());
-      return action;
-    },
-    subscribe: (listener: Listener) => listeners.push(listener),
-    getState: () => state,
-  };
-};
-
-const initState = {
-  todos: [],
-};
-
-const reducer: Reducer = (state = initState, action) => {
-  switch (action.type) {
-    case 'add':
-      return { todos: [...state.todos, action.payload] };
-    default:
-      return state;
-  }
-};
-
-const store = createStore(reducer);
+import store from 'modules/store';
+import { useEffect, useState } from 'react';
 
 const Todos = () => {
-  const [todos, setTodos] = useState([]);
-  const onSubmit = (e: any) => {
-    e.preventDefault();
-    store.dispatch({ type: 'add', payload: '할일 추가' });
-  };
+  useEffect(() => {
+    store.subscribe(() => setTodos(store.getState().todos));
+  });
 
-  console.log('todos', todos);
+  const [todos, setTodos] = useState([]);
+  const [todo, setTodo] = useState('');
+
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (!todo) {
+      window.alert('값을 입력해주세요');
+      return;
+    }
+    store.dispatch({ type: 'add', payload: todo });
+    setTodo('');
+  };
 
   return (
     <div>
-      {todos?.map((todo: string, i: number) => <li key={i}>{todo}</li>)}
-      <form onSubmit={onSubmit}>
-        <input type="text" id="todo" name="todo" />
+      <form onSubmit={onSubmit} method="post" id="todo-form">
+        <input
+          type="text"
+          id="todo"
+          name="todo"
+          value={todo}
+          onChange={(e) => setTodo(e.target.value)}
+        />
         <button type="submit">submit</button>
       </form>
+      {todos?.map((todo: string, i: number) => <li key={i}>{todo}</li>)}
     </div>
   );
 };

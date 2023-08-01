@@ -3,8 +3,12 @@ type Action = any;
 type Reducer = (state: State, action: Action) => State;
 type Listener = () => void;
 
+const initState = {
+  todos: [],
+};
+
 const createStore = (reducer: Reducer) => {
-  let state: State;
+  let state: State = initState;
   const listeners: Listener[] = [];
   reducer(state, {
     type: 'init',
@@ -19,10 +23,6 @@ const createStore = (reducer: Reducer) => {
     subscribe: (listener: Listener) => listeners.push(listener),
     getState: () => state,
   };
-};
-
-const initState = {
-  todos: [],
 };
 
 const reducer: Reducer = (state = initState, action) => {
